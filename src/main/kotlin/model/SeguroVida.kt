@@ -8,7 +8,7 @@ class SeguroVida : Seguro {
     private var indemnizacion: Double
 
     companion object {
-        private var numPolizasVida = 800000
+        internal var numPolizasVida = 800000
     }
 
     constructor(dniTitular: String, importe: Double, fechaNac: LocalDate, nivelRiesgo: String, indemnizacion: Double)

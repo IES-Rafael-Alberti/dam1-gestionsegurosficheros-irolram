@@ -4,7 +4,7 @@ package data
 import model.Seguro
 
 
-class RepoSegurosMem : IRepoSeguros{
+open class RepoSegurosMem : IRepoSeguros{
 
     val listSeguro = mutableListOf<Seguro>()
 

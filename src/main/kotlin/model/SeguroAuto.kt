@@ -9,7 +9,7 @@ class SeguroAuto : Seguro {
     private var numPartes: Int
 
     companion object {
-        private var numPolizasAuto = 400000
+        internal var numPolizasAuto = 400000
     }
 
     private constructor(dniTitular:String,importe:Double,  descripcion:String, combustible: String, tipoAuto:String, cobertura:String, asistenciaCarretera: Boolean, numPartes:Int)
