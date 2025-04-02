@@ -48,9 +48,9 @@ class SeguroHogar : Seguro {
     }
 
     override fun calcularImporteAnioSiguiente(interes: Double): Double {
-        if (interes >5){
 
-        }
+        val valor_5_anios = antiguedad / 5
+
     }
 
     override fun toString(): String {

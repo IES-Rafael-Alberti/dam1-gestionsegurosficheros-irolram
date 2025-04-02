@@ -2,7 +2,7 @@ package model
 
 import kotlin.collections.get
 
-open class Usuario(val nombre: String,protected var clave: String,  val perfil: String): IExportable {
+open class Usuario(val nombre: String,protected var clave: String,  val perfil: Perfil): IExportable {
 
     companion object{
 
