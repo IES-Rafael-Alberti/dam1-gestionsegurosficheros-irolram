@@ -3,16 +3,17 @@ class SeguroAuto : Seguro {
 
     private var descripcion: String
     private var combustible: String
-    private var tipoAuto: String
-    private var cobertura: String
+    private var tipoAuto: Auto
+    private var cobertura: Cobertura
     private var asistenciaCarretera: Boolean
     private var numPartes: Int
 
     companion object {
         internal var numPolizasAuto = 400000
+
     }
 
-    private constructor(dniTitular:String,importe:Double,  descripcion:String, combustible: String, tipoAuto:String, cobertura:String, asistenciaCarretera: Boolean, numPartes:Int)
+     constructor(dniTitular:String,importe:Double,  descripcion:String, combustible: String, tipoAuto:Auto, cobertura:Cobertura, asistenciaCarretera: Boolean, numPartes:Int)
             : super(numPolizasAuto++, dniTitular, importe) {
         this.descripcion = descripcion
         this.combustible = combustible
@@ -22,7 +23,7 @@ class SeguroAuto : Seguro {
         this.numPartes = numPartes
     }
 
-    private constructor(numPoliza:Int,dniTitular:String,importe:Double,  descripcion:String, combustible: String, tipoAuto:String, cobertura:String, asistenciaCarretera: Boolean, numPartes:Int)
+    private constructor(numPoliza:Int,dniTitular:String,importe:Double,  descripcion:String, combustible: String, tipoAuto:Auto, cobertura:Cobertura, asistenciaCarretera: Boolean, numPartes:Int)
             : super(numPoliza, dniTitular, importe) {
         this.descripcion = descripcion
         this.combustible = combustible
