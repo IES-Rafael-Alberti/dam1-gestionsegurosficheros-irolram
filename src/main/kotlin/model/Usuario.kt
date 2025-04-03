@@ -1,6 +1,5 @@
 package model
 
-import kotlin.collections.get
 
 open class Usuario(val nombre: String, clave: String,  val perfil: Perfil): IExportable {
     var clave = clave
@@ -8,25 +7,12 @@ open class Usuario(val nombre: String, clave: String,  val perfil: Perfil): IExp
 
     companion object{
 
-        val usuarios = mutableSetOf<String>()
         fun crearUsuario(datos: List<String>): Usuario? {
-            return try {
-                if (datos.size != 3) throw IllegalArgumentException("Debe tener 3 valores: nombre, clave y perfil")
 
-                val nombre = datos[0]
-                val clave = datos[1]
-                val perfil = datos[2]
-
-                if (usuarios.contains(nombre)) {
-                    throw IllegalArgumentException("El nombre de usuario ya existe.")
-                }
-
-                val usuario = Usuario(nombre, clave, perfil)
-                if (usuarios.add(nombre)) usuario else throw IllegalStateException("Error al registrar el usuario.")
-            } catch (e: Exception) {
-                println("Error al crear usuario: ${'$'}${e.message}")
-                null
-            }
+            val nombre = datos[0]
+            val clave = datos[1]
+            val perfil = Perfil.getPerfil(datos[2])
+            return Usuario(nombre,clave, perfil)
         }
     }
 

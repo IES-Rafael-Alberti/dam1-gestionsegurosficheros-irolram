@@ -2,7 +2,6 @@ package data
 
 import model.Perfil
 import model.Usuario
-import prog2425.dam1.seguros.data.RepoUsuariosMem
 
 class RepoUsuariosFich: RepoUsuariosMem() {
     override fun agregar(usuario: Usuario): Boolean {

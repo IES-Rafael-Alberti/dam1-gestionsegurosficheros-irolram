@@ -14,7 +14,8 @@ class GestorSeguros(val repoSeguros: IRepoSeguros) :IServSeguros{
         direccion: String,
         anioConstruccion: Int
     ): Boolean {
-        TODO("Not yet implemented")
+        val seguroH = SeguroHogar(dniTitular, importe,metrosCuadrados,valorContenido, direccion,anioConstruccion )
+        return repoSeguros.agregar(seguroH)
     }
 
     override fun contratarSeguroAuto(
@@ -27,8 +28,8 @@ class GestorSeguros(val repoSeguros: IRepoSeguros) :IServSeguros{
         asistenciaCarretera: Boolean,
         numPartes: Int
     ): Boolean {
-       val seguro = SeguroAuto(dniTitular,importe,descripcion,combustible,tipoAuto,cobertura,asistenciaCarretera,numPartes)
-      return repoSeguros.agregar(seguro)
+       val seguroA = SeguroAuto(dniTitular,importe,descripcion,combustible,tipoAuto,cobertura,asistenciaCarretera,numPartes)
+      return repoSeguros.agregar(seguroA)
 
     }
 
@@ -39,18 +40,26 @@ class GestorSeguros(val repoSeguros: IRepoSeguros) :IServSeguros{
         nivelRiesgo: Riesgo,
         indemnizacion: Double
     ): Boolean {
-
+        val seguroV =  SeguroVida(dniTitular,importe,fechaNacimiento, nivelRiesgo,indemnizacion)
+        return repoSeguros.agregar(seguroV)
     }
 
     override fun eliminarSeguro(numPoliza: Int): Boolean {
-        TODO("Not yet implemented")
+
+        return repoSeguros.eliminar(numPoliza)
+
     }
 
     override fun consultarTodos(): List<Seguro> {
-        TODO("Not yet implemented")
+
+        return repoSeguros.obtenerTodos()
+
     }
 
     override fun consultarPorTipo(tipoSeguro: String): List<Seguro> {
-        TODO("Not yet implemented")
+
+
+    return repoSeguros.obtener(tipoSeguro)
+
     }
 }

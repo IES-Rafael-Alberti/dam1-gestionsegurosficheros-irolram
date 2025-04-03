@@ -1,7 +1,7 @@
 package model
 
 class SeguroHogar : Seguro {
-    private var metrosCuadrados: Double
+    private var metrosCuadrados: Int
     private var valorContenido: Double
     private var direccion: String
     private var anioConstruccion: Int
@@ -12,34 +12,28 @@ class SeguroHogar : Seguro {
         private const val CICLO_ANIOS_INCREMENTO = 5
 
         fun crearSeguro(datos: List<String>): SeguroHogar {
-            return try {
-                if (datos.size != 6) throw IllegalArgumentException("Debe proporcionar 6 valores: dniTitular, importe, metrosCuadrados, valorContenido, direccion y anioConstruccion")
-
-                val dniTitular = datos[0]
-                val importe = datos[1].toDouble()
-                val metrosCuadrados = datos[2].toDouble()
-                val valorContenido = datos[3].toDouble()
-                val direccion = datos[4]
-                val anioConstruccion = datos[5].toInt()
-
-                SeguroHogar(dniTitular, importe, metrosCuadrados, valorContenido, direccion, anioConstruccion)
-            } catch (e: Exception) {
-                throw IllegalArgumentException("Error al crear el seguro: ${'$'}${e.message}")
-            }
+            val numPoliza = datos[0].toInt()
+            val dniTitular = datos[1]
+            val importe = datos[2].toDouble()
+            val metrosCuadrados = datos[3].toInt()
+            val valorContenido = datos[4].toDouble()
+            val direccion = datos[5]
+            val anioConstruccion = datos[6].toInt()
+            return SeguroHogar(dniTitular, importe,metrosCuadrados,valorContenido,direccion,anioConstruccion)
         }
 
 
     }
 
-    constructor(dniTitular: String, importe: Double, metrosCuadrados: Double, valorContenido: Double, direccion: String, anioConstruccion: Int)
-            : super(numPolizasHogar++, dniTitular, importe) {
+    constructor(dniTitular: String, importe: Double, metrosCuadrados: Int, valorContenido: Double, direccion: String, anioConstruccion: Int)
+            : super(++numPolizasHogar, dniTitular, importe) {
         this.metrosCuadrados = metrosCuadrados
         this.valorContenido = valorContenido
         this.direccion = direccion
         this.anioConstruccion = anioConstruccion
     }
 
-    private constructor(numPoliza: Int, metrosCuadrados: Double, valorContenido: Double, direccion: String, anioConstruccion: Int,dniTitular: String,importe:Double)
+    private constructor(numPoliza: Int,dniTitular: String,importe:Double, metrosCuadrados: Int, valorContenido: Double, direccion: String, anioConstruccion: Int)
             : super(numPoliza, dniTitular, importe) {
         this.metrosCuadrados = metrosCuadrados
         this.valorContenido = valorContenido
@@ -49,7 +43,7 @@ class SeguroHogar : Seguro {
 
     override fun calcularImporteAnioSiguiente(interes: Double): Double {
 
-        val valor_5_anios = antiguedad / 5
+        TODO()
 
     }
 
