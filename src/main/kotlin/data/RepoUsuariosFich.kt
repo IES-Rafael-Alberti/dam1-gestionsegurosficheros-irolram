@@ -2,34 +2,39 @@ package data
 
 import model.Perfil
 import model.Usuario
+import utils.Ficheros
 
 class RepoUsuariosFich: RepoUsuariosMem() {
+
+    val fich = Ficheros()
+    val repoUsuMem = RepoUsuariosMem()
+
     override fun agregar(usuario: Usuario): Boolean {
-        return super.agregar(usuario)
+
+        for (usuariolista in listUsuarios) {
+            if (usuariolista.nombre == usuario.nombre) {
+                fich.agregarLinea(ruta, linea)
+                return false
+            }else if(){
+                return repoUsuMem.agregar(usuario)
+            }
+        }
+        return false
     }
 
-    override fun buscar(nombreUsuario: String): Usuario? {
-        return super.buscar(nombreUsuario)
-    }
 
     override fun eliminar(usuario: Usuario): Boolean {
-        return super.eliminar(usuario)
+
+        if (fich.escribirArchivo(rutaArchivo, usuarios.filter { it != usuario })) {
+            return super.eliminar(usuario)
+        }
+        return false
+
     }
 
-    override fun eliminar(nombreUsuario: String): Boolean {
-        return super.eliminar(nombreUsuario)
-    }
 
-    override fun obtenerTodos(): List<Usuario> {
-        return super.obtenerTodos()
-    }
+    fun cargarUsuarios():Boolean {
 
-    override fun obtener(perfil: Perfil): List<Usuario> {
-        return super.obtener(perfil)
-    }
-
-    override fun cambiarClave(usuario: Usuario, nuevaClave: String): Boolean {
-        return super.cambiarClave(usuario, nuevaClave)
     }
 
 }
